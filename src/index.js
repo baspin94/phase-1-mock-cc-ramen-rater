@@ -28,29 +28,13 @@ function buildRamen(ramenObject) {
     menuImage.alt = ramenObject["name"];
     ramenMenu.append(menuImage);
   
-    //elements to render after click event
-
-    //detail image
-     
-    //Ramen Name
-    const ramenName = ramenObject["name"];
-
-    //Restaurant Name
-    const restaurant = ramenObject["restaurant"];
-
-    //Rating
-    const rating = ramenObject["rating"];
-
-    //Comment
-    const comment = ramenObject["comment"];
-
     //add event listener for menu click
     menuImage.addEventListener("click", function(){
         detailImage.src = ramenObject["image"];
-        nameHeading.textContent = ramenName;
-        restHeading.textContent = restaurant;
-        ratingSpan.textContent = rating;
-        commPar.textContent = comment;
+        nameHeading.textContent = ramenObject["name"];
+        restHeading.textContent = ramenObject["restaurant"];
+        ratingSpan.textContent = ramenObject["rating"];
+        commPar.textContent = ramenObject["comment"];
     });
 };
 
