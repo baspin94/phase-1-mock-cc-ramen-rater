@@ -1,9 +1,10 @@
 // write your code here
-fetch("http://localhost:3000/ramens")
+document.addEventListener("DOMContentLoaded", function() {
+    fetch("http://localhost:3000/ramens")
     .then(response => response.json())
     .then(function(ramenData) {
         ramenData.forEach(ramen => buildRamen(ramen))
-    });
+    })});
 
 const ramenMenu = document.querySelector("#ramen-menu");
 const ramenDetail = document.querySelector("#ramen-detail");
@@ -58,4 +59,5 @@ form.addEventListener("submit", (e) => {
         comment: e.target.comment.value,
     }
     buildRamen(newRamen);
+    form.reset();
 })
