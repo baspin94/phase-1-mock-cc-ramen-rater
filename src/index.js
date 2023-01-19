@@ -3,11 +3,23 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("http://localhost:3000/ramens")
     .then(response => response.json())
     .then(function(ramenData) {
-        ramenData.forEach(ramen => buildRamen(ramen))
+        ramenData.forEach(ramen => buildRamen(ramen));
+        const firstRamen = ramenData[0]
+        detailImage.src = firstRamen["image"];
+        nameHeading.textContent = firstRamen["name"];
+        restHeading.textContent = firstRamen["restaurant"];
+        ratingSpan.textContent = firstRamen["rating"];
+        commPar.textContent = firstRamen["comment"];
     })});
 
+//Existing HTML Elements
 const ramenMenu = document.querySelector("#ramen-menu");
 const ramenDetail = document.querySelector("#ramen-detail");
+const detailImage = document.querySelector("img.detail-image");
+const nameHeading = document.querySelector("h2.name");
+const restHeading = document.querySelector("h3.restaurant");
+const ratingSpan = document.querySelector("#rating-display");
+const commPar = document.querySelector("#comment-display");
 
 function buildRamen(ramenObject) {
     //image - rendered in menu on page load
@@ -19,22 +31,17 @@ function buildRamen(ramenObject) {
     //elements to render after click event
 
     //detail image
-    const detailImage = document.querySelector("img.detail-image");
      
     //Ramen Name
-    const nameHeading = document.querySelector("h2.name");
     const ramenName = ramenObject["name"];
 
     //Restaurant Name
-    const restHeading = document.querySelector("h3.restaurant");
     const restaurant = ramenObject["restaurant"];
 
     //Rating
-    const ratingSpan = document.querySelector("#rating-display");
     const rating = ramenObject["rating"];
 
     //Comment
-    const commPar = document.querySelector("#comment-display");
     const comment = ramenObject["comment"];
 
     //add event listener for menu click
